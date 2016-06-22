@@ -384,7 +384,7 @@
         // event can be 'progress', 'success', 'error' or 'retry'
         switch(event){
         case 'progress':
-          $.resumableObj.fire('fileProgress', $);
+          $.resumableObj.fire('fileProgress', $, message);
           break;
         case 'error':
           $.abort();
@@ -394,13 +394,13 @@
           break;
         case 'success':
           if(_error) return;
-          $.resumableObj.fire('fileProgress', $); // it's at least progress
+          $.resumableObj.fire('fileProgress', $, message); // it's at least progress
           if($.isComplete()) {
             $.resumableObj.fire('fileSuccess', $, message);
           }
           break;
         case 'retry':
-          $.resumableObj.fire('fileRetry', $);
+          $.resumableObj.fire('fileRetry', $, message);
           break;
         }
       };
