@@ -646,6 +646,11 @@
             }
           }
         };
+
+        if (!$.xhr) {
+          return;
+        }
+
         $.xhr.addEventListener('load', doneHandler, false);
         $.xhr.addEventListener('error', doneHandler, false);
         $.xhr.addEventListener('timeout', doneHandler, false);
